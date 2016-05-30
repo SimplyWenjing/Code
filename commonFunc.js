@@ -43,3 +43,9 @@ var EventUtil={
                 }  
             }  
         }  
+/*============向URL末尾添加查询字符串=============*/
+function addURLParam (url,name,value) {
+    url += (url.indexOf("?") == -1 ? "?" : "&");
+    url += encodeURLComponent(name) + "=" +encodeURLComponent(value);
+    return url;
+}
