@@ -49,3 +49,37 @@ function addURLParam (url,name,value) {
     url += encodeURLComponent(name) + "=" +encodeURLComponent(value);
     return url;
 }
+/*========================跨浏览器的CORS=======================*/
+function createCORSRequest (method,url) {
+    var xhr = createXHR();
+    if ("withCredentails" in xhr) {
+        xhr.open(method,url,true);
+    } else if (typeof XDomainRequest != "undefined") {
+        xhr = new XDomainRequest();
+        xhr.open(method,url);
+    } else {
+        xhr = null;
+    }
+    return xhr;    
+}
+/*=====================使用XHT对象实现HTTP流=======================*/
+function createStreamingClient (url,progress,finished) {
+    var xhr = new XMLHttpRequest();
+    var received = 0;
+    xhr.open("get",url,true);
+    xhr.onreadystatechange = function () {
+        var result;
+        if (xhr.readyState == 3) {
+            //只取得最近数据并调整计数器
+            result = xhr.responseText.substring(received);
+            received += result.length;
+
+            //调用progress函数
+            progress(result);
+        } else if (xhr.readyState == 4) {
+            finished(xhr.responseText);
+        }
+    }
+    xhr.send(null);
+    return xhr;
+}
