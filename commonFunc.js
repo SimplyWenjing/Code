@@ -1,48 +1,48 @@
 var EventUtil={  
-            //添加句柄  
-            addHandler:function(elem,type,handler){  
-                if (elem.addEventListener) {  
-                    elem.addEventListener(type,handler,false);  
-                } else if(elem.attachEvent){  
-                    elem.attachEvent("on"+type,handler);  
-                }else{  
-                    elem["on"+type]=handler;  
-                }  
-            },  
-            //删除句柄  
-            removeHandler:function(elem,type,handler){  
-                if (ele.removeEventListener) {  
-                    elem.removeEventListener(type,handler,false);  
-                } else if(elem.detachEvent){  
-                    elem.detachEvent("on"+type,handler);  
-                }else{  
-                    elem["on"+type]=null;  
-                }  
-            },  
-            //获取事件  
-            getEvent:function(event){  
-                return event?event:window.event;  
-            },  
-            getTarget:function(event){  
-                return event.target||event.srcElement;  
-            } ,
-            //阻止事件的默认行为  
-            preventDefault:function(event){  
-                if(event.preventDefault){  
-                    event.preventDefault();  
-                }else{  
-                    event.returnValue=false;  
-                }  
-            },  
-            //阻止事件的默认行为  
-            stopPropagation:function(event){  
-                if(event.stopPropagation){  
-                    event.stopPropagation();  
-                }else{  
-                    event.cannelBubble=true;  
-                }  
-            }  
+    //添加句柄  
+    addHandler:function(elem,type,handler){  
+        if (elem.addEventListener) {  
+            elem.addEventListener(type,handler,false);  
+        } else if(elem.attachEvent){  
+            elem.attachEvent("on"+type,handler);  
+        }else{  
+            elem["on"+type]=handler;  
         }  
+    },  
+    //删除句柄  
+    removeHandler:function(elem,type,handler){  
+        if (ele.removeEventListener) {  
+            elem.removeEventListener(type,handler,false);  
+        } else if(elem.detachEvent){  
+            elem.detachEvent("on"+type,handler);  
+        }else{  
+            elem["on"+type]=null;  
+        }  
+    },  
+    //获取事件  
+    getEvent:function(event){  
+        return event?event:window.event;  
+    },  
+    getTarget:function(event){  
+        return event.target||event.srcElement;  
+    } ,
+    //阻止事件的默认行为  
+    preventDefault:function(event){  
+        if(event.preventDefault){  
+            event.preventDefault();  
+        }else{  
+            event.returnValue=false;  
+        }  
+    },  
+    //阻止事件的默认行为  
+    stopPropagation:function(event){  
+        if(event.stopPropagation){  
+            event.stopPropagation();  
+        }else{  
+            event.cannelBubble=true;  
+        }  
+    }  
+}  
 /*============向URL末尾添加查询字符串=============*/
 function addURLParam (url,name,value) {
     url += (url.indexOf("?") == -1 ? "?" : "&");
@@ -82,4 +82,17 @@ function createStreamingClient (url,progress,finished) {
     }
     xhr.send(null);
     return xhr;
+}
+/*============================安全的类型检测===================================*/
+//检测是否为数组
+function isArray (value) {
+    return Object.prototype.toString.call(value) == "[object Array]";
+}
+//检测是否为函数
+function isFunction (value) {
+    return Object.prototype.toString.call(value) == "[object Function]";
+}
+//检测是否为正则表达式
+function isRegExp (value) {
+    return Object.prototype.toString.call(value) == "[object RegExp]";
 }
