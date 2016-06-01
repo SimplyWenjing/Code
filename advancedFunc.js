@@ -27,3 +27,22 @@ function arrayChunk (array,process,context,delay) {
 		}
 	},interval);
 }
+/*========================函数节流=============================*/
+function throttle (method,context,delay) {
+	clearTimeout(method.tId);
+	method.tId = setTimeout(function () {
+		method.call(context);
+	},delay)
+}
+//用闭包实现函数节流
+function throttle2 (fn,delay) {
+	var timer = null;
+	return function () {
+		var context = this;
+		var args = arguments;
+		clearTimeout(timer);
+		timer = setTimeout(function () {
+			fn.apply(context,args);
+		},delay);
+	};
+}
