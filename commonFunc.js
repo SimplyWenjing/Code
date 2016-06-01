@@ -83,16 +83,3 @@ function createStreamingClient (url,progress,finished) {
     xhr.send(null);
     return xhr;
 }
-/*============================安全的类型检测===================================*/
-//检测是否为数组
-function isArray (value) {
-    return Object.prototype.toString.call(value) == "[object Array]";
-}
-//检测是否为函数
-function isFunction (value) {
-    return Object.prototype.toString.call(value) == "[object Function]";
-}
-//检测是否为正则表达式
-function isRegExp (value) {
-    return Object.prototype.toString.call(value) == "[object RegExp]";
-}
