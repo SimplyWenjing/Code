@@ -46,7 +46,7 @@ var EventUtil={
 /*============向URL末尾添加查询字符串=============*/
 function addURLParam (url,name,value) {
     url += (url.indexOf("?") == -1 ? "?" : "&");
-    url += encodeURLComponent(name) + "=" +encodeURLComponent(value);
+    url += encodeURLComponent(name) + "=" + encodeURLComponent(value);
     return url;
 }
 /*========================跨浏览器的CORS=======================*/
@@ -82,4 +82,9 @@ function createStreamingClient (url,progress,finished) {
     }
     xhr.send(null);
     return xhr;
+}
+//生成区间内的随机数
+function selectFrom (lowerValue,upperValue) {
+    var l = upperValue - lowerValue;
+    return Math.floor(Math.random() * l + lowerValue);
 }
