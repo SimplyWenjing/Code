@@ -88,3 +88,7 @@ function selectFrom (lowerValue,upperValue) {
     var l = upperValue - lowerValue;
     return Math.floor(Math.random() * l + lowerValue);
 }
+//确定属性存在于对象中还是原型中
+function hasPrototypePropoty (object,name) {
+    return !object.hasOwnProperty(name) && (name in object);
+}
