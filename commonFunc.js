@@ -92,3 +92,10 @@ function selectFrom (lowerValue,upperValue) {
 function hasPrototypePropoty (object,name) {
     return !object.hasOwnProperty(name) && (name in object);
 }
+//确定哪天是1月1日
+(function (){
+    var now = new Date();
+    if (now.getMonth() == 0 && new.getDate() == 1) {
+        alert("Happy New Year");
+    }
+})();
