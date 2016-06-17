@@ -98,4 +98,4 @@ function hasPrototypePropoty (object,name) {
     if (now.getMonth() == 0 && new.getDate() == 1) {
         alert("Happy New Year");
     }
-})();
+})();//可减少闭包占用的内存，因为没有指向匿名函数的引用，只要函数执行完毕，就可以立即撤销其作用域链了。
