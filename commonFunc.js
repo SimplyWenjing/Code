@@ -148,5 +148,5 @@ function getQueryStringAgs() {
             args[name] = value;
         }
     }
-    return args;
+    return args;//args是一个对象，args[name] = value
 }
