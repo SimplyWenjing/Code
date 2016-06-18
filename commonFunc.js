@@ -43,12 +43,14 @@ var EventUtil={
         }  
     }  
 }  
+
 /*============向URL末尾添加查询字符串=============*/
 function addURLParam (url,name,value) {
     url += (url.indexOf("?") == -1 ? "?" : "&");
     url += encodeURLComponent(name) + "=" + encodeURLComponent(value);
     return url;
 }
+
 /*========================跨浏览器的CORS=======================*/
 function createCORSRequest (method,url) {
     var xhr = createXHR();
@@ -62,6 +64,7 @@ function createCORSRequest (method,url) {
     }
     return xhr;    
 }
+
 /*=====================使用XHT对象实现HTTP流=======================*/
 function createStreamingClient (url,progress,finished) {
     var xhr = new XMLHttpRequest();
@@ -83,19 +86,41 @@ function createStreamingClient (url,progress,finished) {
     xhr.send(null);
     return xhr;
 }
+
 //生成区间内的随机数
 function selectFrom (lowerValue,upperValue) {
     var l = upperValue - lowerValue;
     return Math.floor(Math.random() * l + lowerValue);
 }
+
 //确定属性存在于对象中还是原型中
 function hasPrototypePropoty (object,name) {
     return !object.hasOwnProperty(name) && (name in object);
 }
+
 //确定哪天是1月1日
 (function (){
     var now = new Date();
-    if (now.getMonth() == 0 && new.getDate() == 1) {
+    if (now.getMonth() == 0 && now.getDate() == 1) {
         alert("Happy New Year");
     }
-})();//可减少闭包占用的内存，因为没有指向匿名函数的引用，只要函数执行完毕，就可以立即撤销其作用域链了。
+})();//用了私有作用域，可减少闭包占用的内存，因为没有指向匿名函数的引用，只要函数执行完毕，就可以立即撤销其作用域链了。
+
+//取得页面视口大小
+function getViewSize () {
+    var pageSize = {
+        pageWidth: window.innerWidth,
+        pageHeight: window.innerHeight
+    };
+    
+    if (typeof pageSize.pageWidth != "number") {
+        if (document.compatMode == "CSS1Compat") {
+            pageSize.pageWidth = document.documentElement.clientWidth;
+            pageSize.pageHeight = document.documentElement.clientHeight;
+        } else {
+            pageSize.pageWidth = document.body.clientWidth;
+            pageSize.pageHeight = document.body.clientHeight;
+        }
+    }
+    return pageSize;
+}
