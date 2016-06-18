@@ -124,3 +124,29 @@ function getViewSize () {
     }
     return pageSize;
 }
+
+//解析查询字符串
+function getQueryStringAgs() {
+    //取得查询字符串并去掉开头的问号
+    var qs = (location.search.length > 0 ? location.search.substring(1) : "");
+    //保存数据的对象
+    var args = {};
+    //取得每一项
+    var items = qs.length ? qs.split("&") : [];
+    var item = null;
+    var name = null;
+    var value = null;
+    var i = 0;
+    var len = items.length;
+    //逐个将每一项添加到args对象中
+    for (i = 0;i < len;i++) {
+        item = items[i].split("=");
+        name = decodeURIComponent(item[0]);
+        value = decodeURIComponent(item[1]);
+
+        if (name.length) {
+            args[name] = value;
+        }
+    }
+    return args;
+}
