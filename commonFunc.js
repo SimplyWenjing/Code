@@ -150,3 +150,17 @@ function getQueryStringAgs() {
     }
     return args;//args是一个对象，args[name] = value
 }
+
+//将NodeList对象转换为数组
+function convertToArray (nodes) {
+    var array = null;
+    try {
+        array = Array.prototype.slice.call(nodes,0);//针对于非IE浏览器
+    } catch (ex) {
+        array = new Array();
+        for (var i = 0;i < nodes.length;i++) {
+            array.push(nodes[i]);
+        }
+    }
+    return array;
+}
