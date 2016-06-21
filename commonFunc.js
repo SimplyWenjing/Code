@@ -164,3 +164,11 @@ function convertToArray (nodes) {
     }
     return array;
 }
+
+//加载外部script代码
+function loadScript (url) {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = url;
+    document.appendChild(script);
+}
