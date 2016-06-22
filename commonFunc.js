@@ -202,3 +202,9 @@ function removeClass (element,className) {
     classNames.splice(i,1);
     element.className = classNames.join(" ");
 }
+
+//取得文档head元素
+function head () {
+    var head = document.head || document.getElementsByTagName("head")[0];
+    return head;
+}
