@@ -208,3 +208,15 @@ function head () {
     var head = document.head || document.getElementsByTagName("head")[0];
     return head;
 }
+
+//设置元素文本
+function getInnerText (element) {
+    return (typeof element.textContent == "string") ? element.textContent : element.innerText;
+}
+function setInnerText (element,text) {
+    if (typeof element.textContent == "string") {
+        element.textContent = text;
+    } else {
+        element.innerText = text;
+    }
+}
