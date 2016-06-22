@@ -187,3 +187,18 @@ function matchesSelector (element,selector) {
         throw new Error ("Not supported");
     }
 }
+
+//删除element元素的className类
+function removeClass (element,className) {
+    //取得类名字符串并拆分成数组
+    var classNames = element.className.split(/\s+/);
+    //找到要删除的类名
+    var len = classNames.length;
+    for (var i = 0 ; i < len; i ++) {
+        if (classNames[i] == className) {
+            break;
+        }
+    }
+    classNames.splice(i,1);
+    element.className = classNames.join(" ");
+}
