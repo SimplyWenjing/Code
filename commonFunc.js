@@ -174,3 +174,9 @@ function setInnerText (element,text) {
         element.innerText = text;
     }
 }
+
+//获取CSS样式
+function getCSS (element,key) {
+    var computedStyle = element.currentStyle ? element.currentStyle : document.defaultView.getComputedStyle(element,null);
+    return computedStyle[key];
+}
