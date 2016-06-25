@@ -190,3 +190,23 @@ function loadStyle (url) {
     var head = document.getElementsByTagName("head")[0];
     head.appendChild(link);
 }
+
+//取得元素在页面中的位置，返回左偏移量和上偏移量
+function getElementLocation (element) {
+    var loc = {
+        left:0,
+        top:0
+    };
+    var actualLeft = element.offsetLeft;
+    var actualTop = element.offsetTop;
+    var current = element.offsetParent;
+
+    while(current !== null) {
+        actualLeft += current.offsetLeft;
+        actualTop += current.offsetTop;
+        current = current.offsetParent;
+    }
+    loc.left = actualLeft;
+    loc.top = actualTop;
+    return loc;
+}
