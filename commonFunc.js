@@ -180,3 +180,13 @@ function getCSS (element,key) {
     var computedStyle = element.currentStyle ? element.currentStyle : document.defaultView.getComputedStyle(element,null);
     return computedStyle[key];
 }
+
+//动态加载样式表
+function loadStyle (url) {
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = url;
+    var head = document.getElementsByTagName("head")[0];
+    head.appendChild(link);
+}
