@@ -42,7 +42,7 @@ var EventUtil = {
 		} else {
 			event.cancleBubble = true;
 		}
-	}
+	},
 	//获取相关元素
 	getRelatedTarget: function (event) {
 		if (event.relatedTarget) {
@@ -53,6 +53,14 @@ var EventUtil = {
 			return event.fromElement;
 		} else {
 			return null;
+		}
+	},
+	//获取charCode
+	getCharCode: function (event) {
+		if (typeof event.charCode == "number") {
+			return event.charCode;
+		} else {
+			return event.keyCode;
 		}
 	}
 };
