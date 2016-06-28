@@ -62,5 +62,17 @@ var EventUtil = {
 		} else {
 			return event.keyCode;
 		}
+	},
+	//剪贴板相关方法
+	getClipboardText: function (event) {
+		var clipboardData = (event.clipboardData || window.clipboardData);
+		return clipboardData.getData("text");
+	},
+	setClipboardText: function (event) {
+		if (event.clipboardData) {
+			return event.clipboardData.setData("text/plain",value);
+		} else if (window.clipboardData) {
+			return window.clipboardData.setData("text",value);
+		}
 	}
 };
