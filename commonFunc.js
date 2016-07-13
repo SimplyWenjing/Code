@@ -209,3 +209,15 @@ function getElementLocation (element) {
     loc.top = actualTop;
     return loc;
 }
+
+//客户端数据存储,持久保存客户端数据的方案，适用于长期保存用户偏好设置！
+function getLocalStorage () {
+    if (typeof localStorage == "object") {
+        return localStorage;
+    } else if (typeof globalStorage == "object") {
+        return globalStorage;
+    } else {
+        throw new Error ("Local storage not available")
+    }
+
+}
