@@ -6,7 +6,7 @@ var EventUtil = {
 		} else if (element.attachEvent) {
 			element.attachEvent("on" + tye,handler);
 		} else {
-			element["on" + tyle] = handler;
+			element["on" + type] = handler;
 		}
 	},
 	//取消事件处理程序
