@@ -52,6 +52,25 @@ var sort = {
 			array[j] = value;//j就是要插入的位置
 		}
 		return array;
+	},
+
+	//快速排序，找一个基准值，比它小的放在它前面比它大的放在它后面
+	quickSort: function (array) {
+		var len = array.length;
+		if (len <= 1) {
+			return array;
+		}
+		var pivot    = array[0];		
+		var leftArr  = [];
+		var rightArr = [];
+		for(var i = 1; i < len; i ++) {
+			if (array[i] < pivot) {
+				leftArr.push(array[i]);
+			} else {
+				rightArr.push(array[i]);
+			}
+		}
+		return arguments.callee(leftArr).concat(pivot,arguments.callee(rightArr));
 	}
 
 }

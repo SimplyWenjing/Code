@@ -105,6 +105,9 @@ function getQueryStringAgs() {
     return args;//args是一个对象，args[name] = value
 }
 
+
+
+
 //将NodeList对象转换为数组
 function convertToArray (nodes) {
     var array = null;

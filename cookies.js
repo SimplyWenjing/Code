@@ -1,5 +1,4 @@
 var CookieUtil = {
-	
     get: function (name){
         var cookieName = encodeURIComponent(name) + "=",
             cookieStart = document.cookie.indexOf(cookieName),
